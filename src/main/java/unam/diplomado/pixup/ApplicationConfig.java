@@ -16,8 +16,8 @@ package unam.diplomado.pixup;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
-
-@ApplicationPath("")
+//ruta a nivel de path http donde está mi aplicación
+@ApplicationPath("api")
 public class ApplicationConfig extends Application {
     
 }
