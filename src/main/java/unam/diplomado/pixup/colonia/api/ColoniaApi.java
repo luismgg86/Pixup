@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import unam.diplomado.pixup.colonia.api.dto.ColoniaDTO;
 import unam.diplomado.pixup.colonia.domain.Colonia;
 
 import java.util.Collection;
@@ -16,13 +17,11 @@ import java.util.Collection;
 public interface ColoniaApi {
 
     @GET
-    @Path("{id}") //va armando la ruta del endpoint con una wild cart
-    //Colonia getColoniaById(@PathParam("id") Integer id);
-    Response getColoniaById(@PathParam("id") Integer id);
-
+    @Path("{id}")
+    Colonia getColoniaById(@PathParam("id") Integer id);
 
     @GET
-    Collection<Colonia> getColoniasByCp(
+    Collection<ColoniaDTO> getColoniasByCp(
             @NotBlank @QueryParam("cp") String cp);
 
     @DELETE
@@ -30,7 +29,7 @@ public interface ColoniaApi {
     void deleteColonia(@PathParam("id") Integer id);
 
     @POST
-    Response createColonia(@NotNull @Valid Colonia colonia); //aplica las validaciones que se especificaron en la entidad Colonia
+    Response createColonia(@NotNull @Valid Colonia colonia);
 
     @PUT
     @Path("{id}")
