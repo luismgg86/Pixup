@@ -44,7 +44,7 @@ public class UsuarioServiceImpl implements UsuarioService{
         domicilio.setColonia(colonia.get());
 
         //validacion de tipo domicilio
-        Optional < TipoDomicilio> tipoDomicilio = tipoDomicilioRepository.findById(domicilio.getTipoDomicilio().getId());
+        Optional <TipoDomicilio> tipoDomicilio = tipoDomicilioRepository.findById(domicilio.getTipoDomicilio().getId());
         if (tipoDomicilio.isEmpty()){
             throw  new ColoniaNotFoundException(domicilio.getTipoDomicilio().getId());
         }

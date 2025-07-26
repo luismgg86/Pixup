@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name="genero_musical")
 public class GeneroMusical implements Serializable {
 
     @Id
