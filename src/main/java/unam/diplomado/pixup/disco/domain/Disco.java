@@ -13,27 +13,18 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @Entity
-@Table
 public class Disco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @NotBlank(message = "Titulo es requerido")
     private String titulo;
-
     private Double precio;
     private Integer existencia;
     private Double descuento;
-
-    @JsonbDateFormat("yyyy-MM-dd'T'HH:mm:ss")
     @Column(name="fecha_lanzamiento")
     private LocalDateTime fechaLanzamiento;
-
-    @Pattern(regexp = "^.+\\.(jpg|jpeg|png|gif)$", message = "La imagen debe terminar en .jpg, .jpeg, .png o .gif")
     private String imagen;
-
     @ManyToOne(targetEntity= Artista.class)
     @JoinColumn(name="id_artista", nullable=false)
     private Artista artista;
@@ -43,4 +34,31 @@ public class Disco implements Serializable {
     @ManyToOne(targetEntity = GeneroMusical.class)
     @JoinColumn(name="id_genero_musical",nullable = false)
     private GeneroMusical generoMusical;
+
+    public Disco(
+            String titulo,
+            Double precio,
+            Integer existencia,
+            Double descuento,
+            LocalDateTime fechaLanzamiento,
+            String imagen,
+            Integer idArtista,
+            Integer idDisquera,
+            Integer idGeneroMusical
+    ) {
+        this.titulo = titulo;
+        this.precio = precio;
+        this.existencia = existencia;
+        this.descuento = descuento;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.imagen = imagen;
+        this.artista = new Artista();
+        this.artista.setId(idArtista);
+        this.disquera =  new Disquera();
+        this.disquera.setId(idDisquera);
+        this.generoMusical = new GeneroMusical();
+        this.generoMusical.setId(idGeneroMusical);
+    }
+
+
 }

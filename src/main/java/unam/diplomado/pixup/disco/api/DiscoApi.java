@@ -8,7 +8,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import unam.diplomado.pixup.disco.domain.Disco;
+import unam.diplomado.pixup.disco.api.dto.DiscoRequestDTO;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -16,5 +16,5 @@ import unam.diplomado.pixup.disco.domain.Disco;
 public interface DiscoApi {
     @POST
     @Path("alta")
-    Response altaDisco(@NotNull @Valid Disco disco);
+    Response altaDisco(@NotNull @Valid DiscoRequestDTO discoRequestDTO);
 }
